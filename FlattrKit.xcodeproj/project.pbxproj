@@ -10,9 +10,17 @@
 		8A5CFB9614C10E3900511973 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5CFB9514C10E3900511973 /* UIKit.framework */; };
 		8A5CFB9814C10E3900511973 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5CFB9714C10E3900511973 /* Foundation.framework */; };
 		8A5CFB9A14C10E3900511973 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5CFB9914C10E3900511973 /* CoreGraphics.framework */; };
-		8A5CFBA014C10E3900511973 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A5CFB9E14C10E3900511973 /* InfoPlist.strings */; };
-		8A5CFBA214C10E3900511973 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBA114C10E3900511973 /* main.m */; };
 		8A5CFBA614C10E3900511973 /* VUAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBA514C10E3900511973 /* VUAppDelegate.m */; };
+		8A5CFBBF14C1111D00511973 /* VUFlattr.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBBE14C1111D00511973 /* VUFlattr.m */; };
+		8A5CFBC114C112AF00511973 /* libOAuth2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5CFBC014C112AF00511973 /* libOAuth2Client.a */; };
+		8A5CFBC314C1143300511973 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5CFBC214C1143300511973 /* Security.framework */; };
+		8A5CFBC614C116EE00511973 /* VUViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBC514C116EE00511973 /* VUViewController.m */; };
+		8A5CFBDB14C11A1500511973 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBDA14C11A1500511973 /* main.m */; };
+		8A5CFBDE14C11BBD00511973 /* VUAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBDD14C11BBD00511973 /* VUAuthViewController.m */; };
+		8A5CFBE114C1276100511973 /* VUFlattrUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBE014C1276100511973 /* VUFlattrUser.m */; };
+		8A5CFBE414C1277400511973 /* VUFlattrThing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBE314C1277400511973 /* VUFlattrThing.m */; };
+		8A5CFBEB14C12C2400511973 /* VUFlattrElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBEA14C12C2400511973 /* VUFlattrElement.m */; };
+		8A5CFBEF14C1374E00511973 /* NXOAuth2Request+Bearer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBEE14C1374E00511973 /* NXOAuth2Request+Bearer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +28,28 @@
 		8A5CFB9514C10E3900511973 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8A5CFB9714C10E3900511973 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8A5CFB9914C10E3900511973 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		8A5CFB9D14C10E3900511973 /* FlattrKit-Info.plist */ = {isa = PBXFileReference; path = "FlattrKit-Info.plist"; sourceTree = "<group>"; };
-		8A5CFB9F14C10E3900511973 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		8A5CFBA114C10E3900511973 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8A5CFBA314C10E3900511973 /* FlattrKit-Prefix.pch */ = {isa = PBXFileReference; path = "FlattrKit-Prefix.pch"; sourceTree = "<group>"; };
-		8A5CFBA414C10E3900511973 /* VUAppDelegate.h */ = {isa = PBXFileReference; path = VUAppDelegate.h; sourceTree = "<group>"; };
+		8A5CFB9D14C10E3900511973 /* FlattrKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = "FlattrKit-Info.plist"; path = "Example/FlattrKit-Info.plist"; sourceTree = "<group>"; };
+		8A5CFBA314C10E3900511973 /* FlattrKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "FlattrKit-Prefix.pch"; path = "FlattrKit/FlattrKit-Prefix.pch"; sourceTree = "<group>"; };
+		8A5CFBA414C10E3900511973 /* VUAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VUAppDelegate.h; sourceTree = "<group>"; };
 		8A5CFBA514C10E3900511973 /* VUAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VUAppDelegate.m; sourceTree = "<group>"; };
+		8A5CFBBD14C1111D00511973 /* VUFlattr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VUFlattr.h; sourceTree = "<group>"; };
+		8A5CFBBE14C1111D00511973 /* VUFlattr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VUFlattr.m; sourceTree = "<group>"; };
+		8A5CFBC014C112AF00511973 /* libOAuth2Client.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth2Client.a; path = "OAuth2Client/build/Release-iphoneos/libOAuth2Client.a"; sourceTree = "<group>"; };
+		8A5CFBC214C1143300511973 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		8A5CFBC414C116EE00511973 /* VUViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VUViewController.h; sourceTree = "<group>"; };
+		8A5CFBC514C116EE00511973 /* VUViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VUViewController.m; sourceTree = "<group>"; };
+		8A5CFBDA14C11A1500511973 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Example/main.m; sourceTree = SOURCE_ROOT; };
+		8A5CFBDC14C11BBD00511973 /* VUAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VUAuthViewController.h; sourceTree = "<group>"; };
+		8A5CFBDD14C11BBD00511973 /* VUAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VUAuthViewController.m; sourceTree = "<group>"; };
+		8A5CFBDF14C1276100511973 /* VUFlattrUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VUFlattrUser.h; sourceTree = "<group>"; };
+		8A5CFBE014C1276100511973 /* VUFlattrUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VUFlattrUser.m; sourceTree = "<group>"; };
+		8A5CFBE214C1277400511973 /* VUFlattrThing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VUFlattrThing.h; sourceTree = "<group>"; };
+		8A5CFBE314C1277400511973 /* VUFlattrThing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VUFlattrThing.m; sourceTree = "<group>"; };
+		8A5CFBE514C1279600511973 /* FlattrKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlattrKit.h; sourceTree = "<group>"; };
+		8A5CFBE914C12C2400511973 /* VUFlattrElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VUFlattrElement.h; sourceTree = "<group>"; };
+		8A5CFBEA14C12C2400511973 /* VUFlattrElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VUFlattrElement.m; sourceTree = "<group>"; };
+		8A5CFBED14C1374E00511973 /* NXOAuth2Request+Bearer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NXOAuth2Request+Bearer.h"; sourceTree = "<group>"; };
+		8A5CFBEE14C1374E00511973 /* NXOAuth2Request+Bearer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NXOAuth2Request+Bearer.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A5CFBC314C1143300511973 /* Security.framework in Frameworks */,
+				8A5CFBC114C112AF00511973 /* libOAuth2Client.a in Frameworks */,
 				8A5CFB9614C10E3900511973 /* UIKit.framework in Frameworks */,
 				8A5CFB9814C10E3900511973 /* Foundation.framework in Frameworks */,
 				8A5CFB9A14C10E3900511973 /* CoreGraphics.framework in Frameworks */,
@@ -45,6 +71,7 @@
 		8A5CFB8614C10E3800511973 = {
 			isa = PBXGroup;
 			children = (
+				8A5CFBAD14C10E8200511973 /* Example */,
 				8A5CFB9B14C10E3900511973 /* FlattrKit */,
 				8A5CFB9414C10E3900511973 /* Frameworks */,
 				8A5CFB9214C10E3900511973 /* Products */,
@@ -62,9 +89,11 @@
 		8A5CFB9414C10E3900511973 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8A5CFB9514C10E3900511973 /* UIKit.framework */,
-				8A5CFB9714C10E3900511973 /* Foundation.framework */,
+				8A5CFBC014C112AF00511973 /* libOAuth2Client.a */,
 				8A5CFB9914C10E3900511973 /* CoreGraphics.framework */,
+				8A5CFB9714C10E3900511973 /* Foundation.framework */,
+				8A5CFBC214C1143300511973 /* Security.framework */,
+				8A5CFB9514C10E3900511973 /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -72,9 +101,11 @@
 		8A5CFB9B14C10E3900511973 /* FlattrKit */ = {
 			isa = PBXGroup;
 			children = (
-				8A5CFBA414C10E3900511973 /* VUAppDelegate.h */,
-				8A5CFBA514C10E3900511973 /* VUAppDelegate.m */,
-				8A5CFB9C14C10E3900511973 /* Supporting Files */,
+				8A5CFBEC14C12C2A00511973 /* Private */,
+				8A5CFBE514C1279600511973 /* FlattrKit.h */,
+				8A5CFBBD14C1111D00511973 /* VUFlattr.h */,
+				8A5CFBE214C1277400511973 /* VUFlattrThing.h */,
+				8A5CFBDF14C1276100511973 /* VUFlattrUser.h */,
 			);
 			path = FlattrKit;
 			sourceTree = "<group>";
@@ -83,11 +114,39 @@
 			isa = PBXGroup;
 			children = (
 				8A5CFB9D14C10E3900511973 /* FlattrKit-Info.plist */,
-				8A5CFB9E14C10E3900511973 /* InfoPlist.strings */,
-				8A5CFBA114C10E3900511973 /* main.m */,
 				8A5CFBA314C10E3900511973 /* FlattrKit-Prefix.pch */,
+				8A5CFBDA14C11A1500511973 /* main.m */,
 			);
 			name = "Supporting Files";
+			path = FlattrKit;
+			sourceTree = "<group>";
+		};
+		8A5CFBAD14C10E8200511973 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				8A5CFBA414C10E3900511973 /* VUAppDelegate.h */,
+				8A5CFBA514C10E3900511973 /* VUAppDelegate.m */,
+				8A5CFBC414C116EE00511973 /* VUViewController.h */,
+				8A5CFBC514C116EE00511973 /* VUViewController.m */,
+				8A5CFB9C14C10E3900511973 /* Supporting Files */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		8A5CFBEC14C12C2A00511973 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				8A5CFBED14C1374E00511973 /* NXOAuth2Request+Bearer.h */,
+				8A5CFBEE14C1374E00511973 /* NXOAuth2Request+Bearer.m */,
+				8A5CFBDC14C11BBD00511973 /* VUAuthViewController.h */,
+				8A5CFBDD14C11BBD00511973 /* VUAuthViewController.m */,
+				8A5CFBBE14C1111D00511973 /* VUFlattr.m */,
+				8A5CFBE914C12C2400511973 /* VUFlattrElement.h */,
+				8A5CFBEA14C12C2400511973 /* VUFlattrElement.m */,
+				8A5CFBE314C1277400511973 /* VUFlattrThing.m */,
+				8A5CFBE014C1276100511973 /* VUFlattrUser.m */,
+			);
+			name = Private;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,7 +200,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A5CFBA014C10E3900511973 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,23 +210,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A5CFBA214C10E3900511973 /* main.m in Sources */,
 				8A5CFBA614C10E3900511973 /* VUAppDelegate.m in Sources */,
+				8A5CFBBF14C1111D00511973 /* VUFlattr.m in Sources */,
+				8A5CFBC614C116EE00511973 /* VUViewController.m in Sources */,
+				8A5CFBDB14C11A1500511973 /* main.m in Sources */,
+				8A5CFBDE14C11BBD00511973 /* VUAuthViewController.m in Sources */,
+				8A5CFBE114C1276100511973 /* VUFlattrUser.m in Sources */,
+				8A5CFBE414C1277400511973 /* VUFlattrThing.m in Sources */,
+				8A5CFBEB14C12C2400511973 /* VUFlattrElement.m in Sources */,
+				8A5CFBEF14C1374E00511973 /* NXOAuth2Request+Bearer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		8A5CFB9E14C10E3900511973 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8A5CFB9F14C10E3900511973 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8A5CFBA714C10E3900511973 /* Debug */ = {
@@ -191,7 +245,9 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "OAuth2Client/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -209,8 +265,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "OAuth2Client/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -221,7 +279,8 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlattrKit/FlattrKit-Prefix.pch";
-				INFOPLIST_FILE = "FlattrKit/FlattrKit-Info.plist";
+				INFOPLIST_FILE = "Example/FlattrKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -232,7 +291,8 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlattrKit/FlattrKit-Prefix.pch";
-				INFOPLIST_FILE = "FlattrKit/FlattrKit-Info.plist";
+				INFOPLIST_FILE = "Example/FlattrKit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -257,6 +317,7 @@
 				8A5CFBAB14C10E3900511973 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

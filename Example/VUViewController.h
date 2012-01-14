@@ -1,5 +1,5 @@
 //
-//  VUAppDelegate.h
+//  VUViewController.h
 //  FlattrKit
 //
 //  Created by Boris Bügling on 14.01.12.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VUAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface VUViewController : UIViewController
 
 @end

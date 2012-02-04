@@ -35,6 +35,19 @@
     return YES;
 }
 
+- (void)handleThing:(VUFlattrThing*)thing {
+    NSLog(@"Thing found: %@", thing);
+    
+    [thing flattrThisWithCompletionHandler:^(id data, NSError *error) {
+        if (!data) {
+            [self alertForError:error];
+            return;
+        }
+        
+        NSLog(@"Flattred a thing: %@", data);
+    }];
+}
+
 - (void)lookUpThingWithUrl:(NSURL*)url user:(VUFlattrUser*)user {
     [user thingForURL:url completionHandler:^(id data, NSError *error) {
         if (!data) {
@@ -44,21 +57,15 @@
                     return;
                 }
                 
-                NSLog(@"Things found: %@", data);
+                NSAssert([data count] > 0, @"Flattr search returned empty result.");
+                data = [data objectAtIndex:0];
+                
+                [self handleThing:data];
             }];
             return;
         }
         
-        NSLog(@"Thing found: %@", data);
-        
-        [data flattrThisWithCompletionHandler:^(id data, NSError *error) {
-            if (!data) {
-                [self alertForError:error];
-                return;
-            }
-            
-            NSLog(@"Flattred a thing: %@", data);
-        }];
+        [self handleThing:data];
     }];
 }
 
@@ -82,11 +89,11 @@
             NSLog(@"Things for user: %@", data);
         }];
         
-        //NSURL* bamRealURL = [NSURL URLWithString:@"http://breakfast.vu0.org/"];
-        NSURL* bamFlattrURL = [NSURL URLWithString:@"http://manuspielt.wordpress.com/2010/11/26/breakfast-at-manuspielts/"];
+        NSURL* bamRealURL = [NSURL URLWithString:@"http://breakfast.vu0.org/"];
+        //NSURL* bamFlattrURL = [NSURL URLWithString:@"http://manuspielt.wordpress.com/2010/11/26/breakfast-at-manuspielts/"];
         
-        //[self lookUpThingWithUrl:bamRealURL user:user];
-        [self lookUpThingWithUrl:bamFlattrURL user:user];
+        [self lookUpThingWithUrl:bamRealURL user:user];
+        //[self lookUpThingWithUrl:bamFlattrURL user:user];
         
         //[user autosubmitURL:bamFlattrURL];
     } scope:VUFlattrScope_Flattr];

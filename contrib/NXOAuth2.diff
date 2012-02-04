@@ -1,0 +1,91 @@
+diff --git a/Sources/OAuth2Client/NXOAuth2AccountStore.h b/Sources/OAuth2Client/NXOAuth2AccountStore.h
+index d5ed2ff..c83bcf7 100644
+--- a/Sources/OAuth2Client/NXOAuth2AccountStore.h
++++ b/Sources/OAuth2Client/NXOAuth2AccountStore.h
+@@ -30,6 +30,7 @@ extern NSString * const kNXOAuth2AccountStoreConfigurationSecret;
+ extern NSString * const kNXOAuth2AccountStoreConfigurationAuthorizeURL;
+ extern NSString * const kNXOAuth2AccountStoreConfigurationTokenURL;
+ extern NSString * const kNXOAuth2AccountStoreConfigurationRedirectURL;
++extern NSString * const kNXOAuth2AccountStoreConfigurationParameters;
+ 
+ 
+ #pragma mark Account Type
+diff --git a/Sources/OAuth2Client/NXOAuth2AccountStore.m b/Sources/OAuth2Client/NXOAuth2AccountStore.m
+index 0a781d9..0587696 100644
+--- a/Sources/OAuth2Client/NXOAuth2AccountStore.m
++++ b/Sources/OAuth2Client/NXOAuth2AccountStore.m
+@@ -38,6 +38,7 @@ NSString * const kNXOAuth2AccountStoreConfigurationSecret = @"kNXOAuth2AccountSt
+ NSString * const kNXOAuth2AccountStoreConfigurationAuthorizeURL = @"kNXOAuth2AccountStoreConfigurationAuthorizeURL";
+ NSString * const kNXOAuth2AccountStoreConfigurationTokenURL = @"kNXOAuth2AccountStoreConfigurationTokenURL";
+ NSString * const kNXOAuth2AccountStoreConfigurationRedirectURL = @"kNXOAuth2AccountStoreConfigurationRedirectURL";
++NSString * const kNXOAuth2AccountStoreConfigurationParameters = @"kNXOAuth2AccountStoreConfigurationParameters";
+ 
+ #pragma mark Account Type
+ 
+@@ -188,8 +189,9 @@ NSString * const kNXOAuth2AccountStoreAccountType = @"kNXOAuth2AccountStoreAccou
+         configuration = [self.configurations objectForKey:accountType];
+     }
+     
++    NSDictionary *parameters = [configuration objectForKey:kNXOAuth2AccountStoreConfigurationParameters];
+     NSURL *redirectURL = [configuration objectForKey:kNXOAuth2AccountStoreConfigurationRedirectURL];
+-    NSURL *preparedURL = [client authorizationURLWithRedirectURL:redirectURL];
++    NSURL *preparedURL = [client authorizationURLWithRedirectURL:redirectURL parameters:parameters];
+     
+     aPreparedAuthorizationURLHandler(preparedURL);
+ }
+@@ -388,8 +390,9 @@ NSString * const kNXOAuth2AccountStoreAccountType = @"kNXOAuth2AccountStoreAccou
+         configuration = [self.configurations objectForKey:accountType];
+     }
+     
++    NSDictionary *parameters = [configuration objectForKey:kNXOAuth2AccountStoreConfigurationParameters];
+     NSURL *redirectURL = [configuration objectForKey:kNXOAuth2AccountStoreConfigurationRedirectURL];
+-    NSURL *preparedURL = [client authorizationURLWithRedirectURL:redirectURL];
++    NSURL *preparedURL = [client authorizationURLWithRedirectURL:redirectURL parameters:parameters];
+     
+ #if TARGET_OS_IPHONE
+         [[UIApplication sharedApplication] openURL:preparedURL];
+diff --git a/Sources/OAuth2Client/NXOAuth2Client.h b/Sources/OAuth2Client/NXOAuth2Client.h
+index 9a429ea..9b3b80c 100644
+--- a/Sources/OAuth2Client/NXOAuth2Client.h
++++ b/Sources/OAuth2Client/NXOAuth2Client.h
+@@ -98,7 +96,7 @@ extern NSString * const NXOAuth2ClientConnectionContextTokenRefresh;
+  * Authenticate usind a web URL (Web Server Flow)
+  * returns the URL to be opened to get access grant
+  */
+-- (NSURL *)authorizationURLWithRedirectURL:(NSURL *)redirectURL;
++- (NSURL *)authorizationURLWithRedirectURL:(NSURL *)redirectURL parameters:(NSDictionary*)parameters;
+ 
+ /*!
+  * Authenticate with username & password (User Credentials Flow)
+diff --git a/Sources/OAuth2Client/NXOAuth2Client.m b/Sources/OAuth2Client/NXOAuth2Client.m
+index 5e4add5..6a53af0 100644
+--- a/Sources/OAuth2Client/NXOAuth2Client.m
++++ b/Sources/OAuth2Client/NXOAuth2Client.m
+@@ -169,13 +169,21 @@ NSString * const NXOAuth2ClientConnectionContextTokenRefresh = @"tokenRefresh";
+ 	}
+ }
+ 
+-- (NSURL *)authorizationURLWithRedirectURL:(NSURL *)redirectURL;
++- (NSURL *)authorizationURLWithRedirectURL:(NSURL *)redirectURL parameters:(NSDictionary*)configuredParameters;
+ {
+-	return [authorizeURL nxoauth2_URLByAddingParameters:[NSDictionary dictionaryWithObjectsAndKeys:
+-														 @"code", @"response_type",
+-														 clientId, @"client_id",
+-														 [redirectURL absoluteString], @"redirect_uri",
+-														 nil]];
++    NSMutableDictionary* parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
++                                       @"code", @"response_type",
++                                       clientId, @"client_id",
++                                       [redirectURL absoluteString], @"redirect_uri",
++                                       nil];
++    
++    if (configuredParameters) {
++        for (id key in [configuredParameters allKeys]) {
++            [parameters setValue:[configuredParameters objectForKey:key] forKey:key];
++        }
++    }
++    
++	return [authorizeURL nxoauth2_URLByAddingParameters:parameters];
+ }
+ 
+ 

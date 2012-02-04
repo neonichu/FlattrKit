@@ -15,7 +15,10 @@
 @interface VUFlattrThing : VUFlattrElement
 
 -(NSString*)description;
+-(NSUInteger)identifier;
 -(NSString*)title;
 -(VUFlattrUser*)user;
+
+-(void)flattrThisWithCompletionHandler:(VUFlattrCompletionHandler)completionHandler;
 
 @end

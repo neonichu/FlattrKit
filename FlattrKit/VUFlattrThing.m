@@ -10,8 +10,18 @@
 
 @interface VUFlattrThing ()
 
+@property (nonatomic, strong) NSString* category;
+@property (nonatomic, strong) NSDate* creationDate;
 @property (nonatomic, strong) NSString* description;
+@property (nonatomic, assign) BOOL hidden;
+@property (nonatomic, assign) NSUInteger identifier;
+@property (nonatomic, strong) NSString* language;
+@property (nonatomic, strong) NSURL* link;
+@property (nonatomic, assign) NSUInteger numberOfFlattrs;
+@property (nonatomic, strong) NSURL* resource;
+@property (nonatomic, strong) NSMutableArray* tags;
 @property (nonatomic, strong) NSString* title;
+@property (nonatomic, strong) NSURL* url;
 @property (nonatomic, strong) VUFlattrUser* user;
 
 @end
@@ -20,8 +30,18 @@
 
 @implementation VUFlattrThing
 
+@synthesize category;
+@synthesize creationDate;
 @synthesize description;
+@synthesize hidden;
+@synthesize identifier;
+@synthesize language;
+@synthesize link;
+@synthesize numberOfFlattrs;
+@synthesize resource;
+@synthesize tags;
 @synthesize title;
+@synthesize url;
 @synthesize user;
 
 #pragma mark -
@@ -29,39 +49,36 @@
 -(id)initWithAccount:(NXOAuth2Account *)account dictionary:(NSDictionary *)dictionary {
     self = [super initWithAccount:account dictionary:dictionary];
     if (self) {
+        self.category = [dictionary valueForKey:@"category"];
+        self.creationDate = [NSDate dateWithTimeIntervalSince1970:[[dictionary valueForKey:@"created_at"] intValue]];
         self.description = [dictionary valueForKey:@"description"];
+        self.hidden = [[dictionary valueForKey:@"hidden"] boolValue];
+        self.identifier = [[dictionary valueForKey:@"id"] intValue];
+        self.language = [dictionary valueForKey:@"language"];
+        self.link = [NSURL URLWithString:[dictionary valueForKey:@"link"]];
+        self.numberOfFlattrs = [[dictionary valueForKey:@"flattrs"] intValue];
+        self.resource = [NSURL URLWithString:[dictionary valueForKey:@"resource"]];
         self.title = [dictionary valueForKey:@"title"];
+        self.url = [NSURL URLWithString:[dictionary valueForKey:@"url"]];
+        
+        self.tags = [NSMutableArray array];
+        for (NSString* tag in [dictionary valueForKey:@"tags"]) {
+            [self.tags addObject:tag];
+        }
     }
     return self;
 }
 
-/*
- JSON for thing:
- 
- {
- "type": "thing",
- "resource": "https://api.flattr.com/rest/v2/things/423405",
- "link": "https://flattr.com/thing/423405",
- "id": 423405,
- "url": "http://blog.flattr.net/2011/10/api-v2-beta-out-whats-changed/",
- "language": "en_GB",
- "category": "text",
- "owner": {
- "type": "user",
- "resource": "https://api.flattr.com/rest/v2/users/flattr",
- "link": "https://flattr.com/profile/flattr",
- "username": "flattr"
- },
- "hidden": false,
- "created_at": 1319704532,
- "tags": [
- "api"
- ],
- "flattrs": 8,
- "description": "We have been working hard to deliver a great experience for developers and tried to build a good foundation for easily add new features. The API will remain in beta for a while for us to kill quirks and refine some of the resources, this means there might be big changes without notice for ...",
- "title": "API v2 beta out - what's changed?"
- }
- 
-*/
+-(void)flattrThisWithCompletionHandler:(VUFlattrCompletionHandler)completionHandler {
+    NSString* urlString = [NSString stringWithFormat:@"https://api.flattr.com/rest/v2/things/%d/flattr", self.identifier];
+    [self performMethod:@"POST" onResource:[NSURL URLWithString:urlString] usingParameters:nil completionHandler:^(id data, NSError *error) {
+        if (!data) {
+            completionHandler(nil, error);
+            return;
+        }
+        
+        NSLog(@"%@", data);
+    }];
+}
 
 @end

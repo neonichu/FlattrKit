@@ -10,5 +10,6 @@ Unimplemented actions
 
 Shortcuts taken
 
+* Check all NSLog statements and turn them into proper code
 * Scopes aren't mutually exclusive, but can be combined
 * Support multiple accounts

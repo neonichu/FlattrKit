@@ -23,6 +23,13 @@
 
 #pragma mark -
 
++(NSError*)errorWithDescription:(NSString*)description {
+    NSDictionary* dict = [NSDictionary dictionaryWithObject:description forKey:NSLocalizedDescriptionKey];
+    return [NSError errorWithDomain:@"vu.org.flattrkit" code:0 userInfo:dict];
+}
+
+#pragma mark -
+
 -(id)init {
     [self doesNotRecognizeSelector:_cmd];
     return nil;
@@ -51,7 +58,20 @@
                               statusCode = ((NSHTTPURLResponse*)response).statusCode;
                           }
                           
-                          if (!responseData || statusCode != 200) {
+                          if (!responseData || statusCode < 200 || statusCode >= 400) {
+                              if (!error) {
+                                  id errorData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
+                                  if (errorData) {
+                                      NSString* description = [errorData valueForKey:@"error_description"];
+                                      if (description) {
+                                          completionHandler(nil, [[self class] errorWithDescription:description]);
+                                          return;
+                                      }
+                                  }
+                                  
+                                  NSLog(@"Empty error, response data: %@", [[NSString alloc] initWithData:responseData 
+                                                                                                 encoding:NSUTF8StringEncoding]);
+                              }
                               completionHandler(nil, error);
                               return;
                           }

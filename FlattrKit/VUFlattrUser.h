@@ -13,5 +13,7 @@
 @interface VUFlattrUser : VUFlattrElement
 
 -(void)thingsWithCompletionHandler:(VUFlattrCompletionHandler)completionHandler;
+-(void)thingForSearchTerm:(NSString*)term completionHandler:(VUFlattrCompletionHandler)completionHandler;
+-(void)thingForURL:(NSURL*)url completionHandler:(VUFlattrCompletionHandler)completionHandler;
 
 @end

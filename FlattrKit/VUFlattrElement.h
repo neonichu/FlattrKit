@@ -10,9 +10,16 @@
 
 #import "NXOAuth2.h"
 
+typedef enum {
+    VUFlattrTypeThing,
+    VUFlattrTypeUser,
+} VUFlattrType;
+
 typedef void (^VUFlattrCompletionHandler)(id data, NSError* error);
 
 @interface VUFlattrElement : NSObject
+
++(NSError*)errorWithDescription:(NSString*)description;
 
 -(id)initWithAccount:(NXOAuth2Account*)account dictionary:(NSDictionary*)dictionary;
 -(id)initWithElement:(VUFlattrElement*)element dictionary:(NSDictionary*)dictionary;

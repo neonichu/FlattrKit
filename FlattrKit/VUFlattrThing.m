@@ -77,7 +77,20 @@
             return;
         }
         
-        NSLog(@"%@", data);
+        if (![[data objectForKey:@"message"] isEqualToString:@"ok"]) {
+            NSString* message = [data objectForKey:@"error_description"];
+            if (!message) {
+                message = [data objectForKey:@"description"];
+                if (!message) {
+                    message = [NSString stringWithFormat:@"Unknown error, full response: %@", data];
+                }
+            }
+            
+            completionHandler(nil, [[self class] errorWithDescription:message]);
+            return;
+        }
+        
+        completionHandler(self, nil);
     }];
 }
 

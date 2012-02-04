@@ -9,9 +9,56 @@
 #import "VUFlattrThing.h"
 #import "VUFlattrUser.h"
 
-@implementation VUFlattrUser
+@interface VUFlattrUser () 
+
+@property (nonatomic, strong) NSString* username;
+
+@end
 
 #pragma mark -
+
+@implementation VUFlattrUser
+
+@synthesize username;
+
+#pragma mark -
+
+-(void)autosubmitURL:(NSURL*)url withErrorHandler:(VUFlattrErrorHandler)errorHandler {
+    [self fetchInfoWithCompletionHandler:^(id data, NSError *error) {
+        if (!data) {
+            errorHandler(error);
+            return;
+        }
+        
+        NSString* autoSubmit = [NSString stringWithFormat:@"https://flattr.com/submit/auto?user_id=%@&url=%@", self.username, 
+                                [url.absoluteString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+        [self performMethod:@"GET" onResource:[NSURL URLWithString:autoSubmit] usingParameters:nil completionHandler:^(id data, NSError *error) {
+            if (!data) {
+                errorHandler(error);
+                return;
+            }
+            
+            NSLog(@"Auto-submit result: %@", data);
+        }];
+    }];
+}
+                            
+-(void)fetchInfoWithCompletionHandler:(VUFlattrCompletionHandler)completionHandler {
+    if (self.username) {
+        completionHandler(self, nil);
+    }
+    
+    [self performMethod:@"GET" onResource:[NSURL URLWithString:@"https://api.flattr.com/rest/v2/user"] usingParameters:nil 
+      completionHandler:^(id data, NSError *error) {
+          if (!data) {
+              completionHandler(nil, error);
+              return;
+          }
+          
+          self.username = [data objectForKey:@"username"];
+          completionHandler(self, nil);
+      }];
+}
 
 -(void)flattrURL:(NSURL*)url withCompletionHandler:(VUFlattrCompletionHandler)completionHandler {
     NSError* error;

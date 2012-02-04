@@ -82,8 +82,13 @@
             NSLog(@"Things for user: %@", data);
         }];
         
-        //[self lookUpThingWithUrl:[NSURL URLWithString:@"http://breakfast.vu0.org/"] user:user];
-        [self lookUpThingWithUrl:[NSURL URLWithString:@"http://manuspielt.wordpress.com/2010/11/26/breakfast-at-manuspielts/"] user:user];
+        //NSURL* bamRealURL = [NSURL URLWithString:@"http://breakfast.vu0.org/"];
+        NSURL* bamFlattrURL = [NSURL URLWithString:@"http://manuspielt.wordpress.com/2010/11/26/breakfast-at-manuspielts/"];
+        
+        //[self lookUpThingWithUrl:bamRealURL user:user];
+        [self lookUpThingWithUrl:bamFlattrURL user:user];
+        
+        //[user autosubmitURL:bamFlattrURL];
     } scope:VUFlattrScope_Flattr];
 }
 

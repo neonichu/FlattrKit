@@ -10,18 +10,52 @@
 #import "VUFlattr.h"
 #import "VUFlattrUser.h"
 
+// For debugging
+#define REMOVE_ACCOUNTS     0
+
+static NSString* const kAuthURL = @"https://flattr.com/oauth/authorize";
 static NSString* const kFlattrServiceType = @"Flattr";
 static NSString* const kRedirectURL = @"http://call.back";
+static NSString* const kTokenURL = @"https://flattr.com/oauth/token";
 
 @implementation VUFlattr
 
 +(id)flattr {
+#if REMOVE_ACCOUNTS
+    for (NXOAuth2Account* account in [[NXOAuth2AccountStore sharedStore] accounts]) {
+        [[NXOAuth2AccountStore sharedStore] removeAccount:account];
+    }
+#endif
     return [[self alloc] init];
+}
+
++(NSString*)stringForScope:(VUFlattrScope)scope {
+    switch (scope) {
+        case VUFlattrScope_Flattr:
+            return @"flattr";
+        case VUFlattrScope_Thing:
+            return @"thing";
+        case VUFlattrScope_ExtendedRead:
+            return @"extendedread";
+        default:
+            break;
+    }
+    
+    [NSException raise:@"Flattr Error" format:@"Scope %d is not supported.", scope];
+    return nil;
+}
+
+#pragma mark -
+
+-(void)dealloc {
+    NXOAuth2AccountStore* store = [NXOAuth2AccountStore sharedStore];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NXOAuth2AccountStoreAccountsDidChangeNotification object:store];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NXOAuth2AccountStoreDidFailToRequestAccessNotification object:store];
 }
 
 -(NXOAuth2Account*)getAccount {
     NSArray* accounts = [[NXOAuth2AccountStore sharedStore] accounts];
-    if (accounts.count != 1) {
+    if (accounts.count < 1) {
         return nil;
     }
     return [accounts objectAtIndex:0];
@@ -32,6 +66,10 @@ static NSString* const kRedirectURL = @"http://call.back";
 }
 
 -(void)loginWithCompletionHandler:(VUFlattrLoginCompletionHandler)completionHandler {
+    [self loginWithCompletionHandler:completionHandler scope:VUFlattrScope_Default];
+}
+
+-(void)loginWithCompletionHandler:(VUFlattrLoginCompletionHandler)completionHandler scope:(VUFlattrScope)scope {
     NXOAuth2Account* account = [self getAccount];
     
     if (account) {
@@ -40,6 +78,16 @@ static NSString* const kRedirectURL = @"http://call.back";
         return;
     }
     
+    if (scope != VUFlattrScope_Default) {
+        NSString* scopeAsString = [[self class] stringForScope:scope];
+        NSMutableDictionary* configuration = [[[NXOAuth2AccountStore sharedStore] configurationForAccountType:kFlattrServiceType] mutableCopy];
+        [configuration setValue:[NSDictionary dictionaryWithObject:scopeAsString forKey:@"scope"] 
+                         forKey:kNXOAuth2AccountStoreConfigurationParameters];
+        [[NXOAuth2AccountStore sharedStore] setConfiguration:configuration forAccountType:kFlattrServiceType];
+    }
+    
+    UIViewController* rootVC = [[UIApplication sharedApplication] keyWindow].rootViewController;
+    
     [[NSNotificationCenter defaultCenter] addObserverForName:NXOAuth2AccountStoreAccountsDidChangeNotification
                                                       object:[NXOAuth2AccountStore sharedStore]
                                                        queue:[NSOperationQueue mainQueue]
@@ -47,17 +95,17 @@ static NSString* const kRedirectURL = @"http://call.back";
                                                       VUFlattrUser* user = [[VUFlattrUser alloc] initWithAccount:[self getAccount] 
                                                                                                       dictionary:nil];
                                                       completionHandler(user, nil);
+                                                      [rootVC dismissModalViewControllerAnimated:YES];
                                                   }];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:NXOAuth2AccountStoreAccountsDidChangeNotification
+    [[NSNotificationCenter defaultCenter] addObserverForName:NXOAuth2AccountStoreDidFailToRequestAccessNotification
                                                       object:[NXOAuth2AccountStore sharedStore]
                                                        queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *aNotification) {
                                                       NSError *error = [aNotification.userInfo objectForKey:NXOAuth2AccountStoreErrorKey];
                                                       completionHandler(nil, error);
+                                                      [rootVC dismissModalViewControllerAnimated:YES];
                                                   }];
-    
-    UIViewController* rootVC = [[UIApplication sharedApplication] keyWindow].rootViewController;
     
     [[NXOAuth2AccountStore sharedStore] requestAccessToAccountWithType:kFlattrServiceType
                                    withPreparedAuthorizationURLHandler:^(NSURL *preparedURL) {
@@ -72,11 +120,10 @@ static NSString* const kRedirectURL = @"http://call.back";
 -(void)setOAuthKey:(NSString*)key secret:(NSString*)secret {
     [[NXOAuth2AccountStore sharedStore] setClientID:key
                                              secret:secret
-                                   authorizationURL:[NSURL URLWithString:@"https://flattr.com/oauth/authorize"]
-                                           tokenURL:[NSURL URLWithString:@"https://flattr.com/oauth/token"]
+                                   authorizationURL:[NSURL URLWithString:kAuthURL]
+                                           tokenURL:[NSURL URLWithString:kTokenURL]
                                         redirectURL:[NSURL URLWithString:kRedirectURL]
                                      forAccountType:kFlattrServiceType];
-
 }
 
 @end

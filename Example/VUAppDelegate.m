@@ -17,7 +17,7 @@
 @synthesize window;
 
 -(void)alertForError:(NSError*)error {
-    NSString* msg = [NSString stringWithFormat:@"Flattr error: %@", error];
+    NSString* msg = [NSString stringWithFormat:@"Flattr error: %@", error.localizedDescription];
     UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:@"Error" message:msg delegate:nil 
                                               cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [errorView show];
@@ -33,6 +33,33 @@
     [self performSelector:@selector(loginToFlattr) withObject:nil afterDelay:0.5];
     
     return YES;
+}
+
+- (void)lookUpThingWithUrl:(NSURL*)url user:(VUFlattrUser*)user {
+    [user thingForURL:url completionHandler:^(id data, NSError *error) {
+        if (!data) {
+            [user thingForSearchTerm:[url absoluteString] completionHandler:^(id data, NSError *error) {
+                if (!data) {
+                    [self alertForError:error];
+                    return;
+                }
+                
+                NSLog(@"Things found: %@", data);
+            }];
+            return;
+        }
+        
+        NSLog(@"Thing found: %@", data);
+        
+        [data flattrThisWithCompletionHandler:^(id data, NSError *error) {
+            if (!data) {
+                [self alertForError:error];
+                return;
+            }
+            
+            NSLog(@"Flattred a thing: %@", data);
+        }];
+    }];
 }
 
 - (void)loginToFlattr {
@@ -54,7 +81,10 @@
             }
             NSLog(@"Things for user: %@", data);
         }];
-    }];
+        
+        //[self lookUpThingWithUrl:[NSURL URLWithString:@"http://breakfast.vu0.org/"] user:user];
+        [self lookUpThingWithUrl:[NSURL URLWithString:@"http://manuspielt.wordpress.com/2010/11/26/breakfast-at-manuspielts/"] user:user];
+    } scope:VUFlattrScope_Flattr];
 }
 
 @end

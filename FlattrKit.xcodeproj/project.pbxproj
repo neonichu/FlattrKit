@@ -21,6 +21,8 @@
 		8A5CFBE414C1277400511973 /* VUFlattrThing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBE314C1277400511973 /* VUFlattrThing.m */; };
 		8A5CFBEB14C12C2400511973 /* VUFlattrElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBEA14C12C2400511973 /* VUFlattrElement.m */; };
 		8A5CFBEF14C1374E00511973 /* NXOAuth2Request+Bearer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBEE14C1374E00511973 /* NXOAuth2Request+Bearer.m */; };
+		8ADF5EAE14CC37DE00B0E23F /* flattr-badge-large.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5EAD14CC37DE00B0E23F /* flattr-badge-large.png */; };
+		8ADF5EB014CC4DC800B0E23F /* cant-flattr-large.png in Resources */ = {isa = PBXBuildFile; fileRef = 8ADF5EAF14CC4DC800B0E23F /* cant-flattr-large.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		8A5CFBEA14C12C2400511973 /* VUFlattrElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VUFlattrElement.m; sourceTree = "<group>"; };
 		8A5CFBED14C1374E00511973 /* NXOAuth2Request+Bearer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NXOAuth2Request+Bearer.h"; sourceTree = "<group>"; };
 		8A5CFBEE14C1374E00511973 /* NXOAuth2Request+Bearer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NXOAuth2Request+Bearer.m"; sourceTree = "<group>"; };
+		8ADF5EAD14CC37DE00B0E23F /* flattr-badge-large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flattr-badge-large.png"; sourceTree = "<group>"; };
+		8ADF5EAF14CC4DC800B0E23F /* cant-flattr-large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cant-flattr-large.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 				8A5CFB9B14C10E3900511973 /* FlattrKit */,
 				8A5CFB9414C10E3900511973 /* Frameworks */,
 				8A5CFB9214C10E3900511973 /* Products */,
+				8ADF5EAB14CC37C500B0E23F /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,6 +154,15 @@
 			name = Private;
 			sourceTree = "<group>";
 		};
+		8ADF5EAB14CC37C500B0E23F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8ADF5EAF14CC4DC800B0E23F /* cant-flattr-large.png */,
+				8ADF5EAD14CC37DE00B0E23F /* flattr-badge-large.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -200,6 +214,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ADF5EAE14CC37DE00B0E23F /* flattr-badge-large.png in Resources */,
+				8ADF5EB014CC4DC800B0E23F /* cant-flattr-large.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,7 @@ typedef enum {
 } VUFlattrType;
 
 typedef void (^VUFlattrCompletionHandler)(id data, NSError* error);
+typedef void (^VUFlattrErrorHandler)(NSError* error);
 
 @interface VUFlattrElement : NSObject
 

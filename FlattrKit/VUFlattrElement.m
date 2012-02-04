@@ -59,8 +59,10 @@
                           }
                           
                           if (!responseData || statusCode < 200 || statusCode >= 400) {
-                              if (!error) {
-                                  id errorData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
+                              id errorData = nil;
+                              if (responseData) {
+                                  errorData = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
+                                  
                                   if (errorData) {
                                       NSString* description = [errorData valueForKey:@"error_description"];
                                       if (description) {
@@ -68,10 +70,13 @@
                                           return;
                                       }
                                   }
-                                  
-                                  NSLog(@"Empty error, response data: %@", [[NSString alloc] initWithData:responseData 
-                                                                                                 encoding:NSUTF8StringEncoding]);
                               }
+                              
+                              if (!error || error.code == -1012) {
+                                  NSString* errorDescription = [NSString stringWithFormat:@"HTTP status code: %d", statusCode];
+                                  error = [[self class] errorWithDescription:errorDescription];
+                              }
+                              
                               completionHandler(nil, error);
                               return;
                           }

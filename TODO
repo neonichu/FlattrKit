@@ -1,0 +1,14 @@
+Unimplemented actions
+
+* Create a thing
+* Delete a thing
+* Flattr an URL (with optional auto-submit)
+* List all flattrs
+* Update a thing
+* User activities
+* User info
+
+Shortcuts taken
+
+* Scopes aren't mutually exclusive, but can be combined
+* Support multiple accounts

@@ -17,6 +17,7 @@
 -(NSString*)description;
 -(NSUInteger)identifier;
 -(NSString*)title;
+-(NSURL*)url;
 -(VUFlattrUser*)user;
 
 -(void)flattrThisWithCompletionHandler:(VUFlattrCompletionHandler)completionHandler;

@@ -15,6 +15,7 @@
 @interface VUFlattrThing : VUFlattrElement
 
 -(NSString*)description;
+-(NSURL*)flattrUrl;
 -(NSUInteger)identifier;
 -(NSString*)title;
 -(NSURL*)url;

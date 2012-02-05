@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString* category;
 @property (nonatomic, strong) NSDate* creationDate;
 @property (nonatomic, strong) NSString* description;
+@property (nonatomic, strong) NSURL* flattrUrl;
 @property (nonatomic, assign) BOOL hidden;
 @property (nonatomic, assign) NSUInteger identifier;
 @property (nonatomic, strong) NSString* language;
@@ -33,6 +34,7 @@
 @synthesize category;
 @synthesize creationDate;
 @synthesize description;
+@synthesize flattrUrl;
 @synthesize hidden;
 @synthesize identifier;
 @synthesize language;
@@ -61,6 +63,7 @@
         self.title = [dictionary valueForKey:@"title"];
         self.url = [NSURL URLWithString:[dictionary valueForKey:@"url"]];
         
+        self.flattrUrl = [NSURL URLWithString:[NSString stringWithFormat:@"https://flattr.com/thing/%ld", self.identifier]];
         self.tags = [NSMutableArray array];
         for (NSString* tag in [dictionary valueForKey:@"tags"]) {
             [self.tags addObject:tag];

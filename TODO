@@ -11,5 +11,8 @@ Unimplemented actions
 Shortcuts taken
 
 * Check all NSLog statements and turn them into proper code
+* Proper error message when setOAuthKey:secret: isn't called
 * Scopes aren't mutually exclusive, but can be combined
 * Support multiple accounts
+* UIWebView for logins should have a back button
+* Write documentation

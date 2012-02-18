@@ -53,7 +53,7 @@
     [NXOAuth2Request vu_performMethod:method onResource:resource 
                       usingParameters:parameters withAccount:self.account 
                       responseHandler:^(NSURLResponse *response, NSData *responseData, NSError *error) {
-                          int statusCode = response ? 200 : 500;
+                          NSInteger statusCode = response ? 200 : 500;
                           if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
                               statusCode = ((NSHTTPURLResponse*)response).statusCode;
                           }

@@ -21,6 +21,13 @@
 		8A5CFBE414C1277400511973 /* VUFlattrThing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBE314C1277400511973 /* VUFlattrThing.m */; };
 		8A5CFBEB14C12C2400511973 /* VUFlattrElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBEA14C12C2400511973 /* VUFlattrElement.m */; };
 		8A5CFBEF14C1374E00511973 /* NXOAuth2Request+Bearer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBEE14C1374E00511973 /* NXOAuth2Request+Bearer.m */; };
+		8AA553C614E3360A00CC30DC /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA553C514E3360A00CC30DC /* Cocoa.framework */; };
+		8AA553D514E3368600CC30DC /* NXOAuth2Request+Bearer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBEE14C1374E00511973 /* NXOAuth2Request+Bearer.m */; };
+		8AA553D714E3368600CC30DC /* VUFlattr.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBBE14C1111D00511973 /* VUFlattr.m */; };
+		8AA553D814E3368600CC30DC /* VUFlattrElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBEA14C12C2400511973 /* VUFlattrElement.m */; };
+		8AA553D914E3368600CC30DC /* VUFlattrThing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBE314C1277400511973 /* VUFlattrThing.m */; };
+		8AA553DA14E3368600CC30DC /* VUFlattrUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBE014C1276100511973 /* VUFlattrUser.m */; };
+		8AA5543214E338DB00CC30DC /* OAuth2Client.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA5543114E338DB00CC30DC /* OAuth2Client.framework */; };
 		8ACC594114DEDD4800FE8DE9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5CFB9714C10E3900511973 /* Foundation.framework */; };
 		8ACC594C14DEDD7B00FE8DE9 /* NXOAuth2Request+Bearer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBEE14C1374E00511973 /* NXOAuth2Request+Bearer.m */; };
 		8ACC594D14DEDD7B00FE8DE9 /* VUAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A5CFBDD14C11BBD00511973 /* VUAuthViewController.m */; };
@@ -60,6 +67,13 @@
 		8A5CFBEA14C12C2400511973 /* VUFlattrElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VUFlattrElement.m; sourceTree = "<group>"; };
 		8A5CFBED14C1374E00511973 /* NXOAuth2Request+Bearer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NXOAuth2Request+Bearer.h"; sourceTree = "<group>"; };
 		8A5CFBEE14C1374E00511973 /* NXOAuth2Request+Bearer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NXOAuth2Request+Bearer.m"; sourceTree = "<group>"; };
+		8AA553C414E3360A00CC30DC /* libFlattrKit-Mac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFlattrKit-Mac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AA553C514E3360A00CC30DC /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		8AA553C814E3360A00CC30DC /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		8AA553C914E3360A00CC30DC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		8AA553CA14E3360A00CC30DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		8AA553CD14E3360A00CC30DC /* FlattrKit-Mac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlattrKit-Mac-Prefix.pch"; sourceTree = "<group>"; };
+		8AA5543114E338DB00CC30DC /* OAuth2Client.framework */ = {isa = PBXFileReference; lastKnownFileType = file; name = OAuth2Client.framework; path = OAuth2Client/build/Release/OAuth2Client.framework; sourceTree = "<group>"; };
 		8ACC594014DEDD4800FE8DE9 /* libFlattrKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFlattrKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACC595214DEDDB700FE8DE9 /* libOAuth2Client.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth2Client.a; path = "OAuth2Client/build/Release-iphoneos/libOAuth2Client.a"; sourceTree = "<group>"; };
 		8ADF5EAD14CC37DE00B0E23F /* flattr-badge-large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flattr-badge-large.png"; sourceTree = "<group>"; };
@@ -76,6 +90,15 @@
 				8A5CFB9614C10E3900511973 /* UIKit.framework in Frameworks */,
 				8A5CFB9814C10E3900511973 /* Foundation.framework in Frameworks */,
 				8A5CFB9A14C10E3900511973 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AA553C114E3360A00CC30DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AA5543214E338DB00CC30DC /* OAuth2Client.framework in Frameworks */,
+				8AA553C614E3360A00CC30DC /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +119,7 @@
 			children = (
 				8A5CFBAD14C10E8200511973 /* Example */,
 				8A5CFB9B14C10E3900511973 /* FlattrKit */,
+				8AA553CB14E3360A00CC30DC /* FlattrKit-Mac */,
 				8A5CFB9414C10E3900511973 /* Frameworks */,
 				8A5CFB9214C10E3900511973 /* Products */,
 				8ADF5EAB14CC37C500B0E23F /* Resources */,
@@ -107,6 +131,7 @@
 			children = (
 				8A5CFB9114C10E3900511973 /* FlattrKit.app */,
 				8ACC594014DEDD4800FE8DE9 /* libFlattrKit.a */,
+				8AA553C414E3360A00CC30DC /* libFlattrKit-Mac.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,12 +139,13 @@
 		8A5CFB9414C10E3900511973 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8ACC595214DEDDB700FE8DE9 /* libOAuth2Client.a */,
-				8A5CFBC014C112AF00511973 /* libOAuth2Client.a */,
+				8AA553C514E3360A00CC30DC /* Cocoa.framework */,
 				8A5CFB9914C10E3900511973 /* CoreGraphics.framework */,
 				8A5CFB9714C10E3900511973 /* Foundation.framework */,
 				8A5CFBC214C1143300511973 /* Security.framework */,
 				8A5CFB9514C10E3900511973 /* UIKit.framework */,
+				8AA553DD14E336C700CC30DC /* OAuth2Client */,
+				8AA553C714E3360A00CC30DC /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -175,6 +201,34 @@
 			name = Private;
 			sourceTree = "<group>";
 		};
+		8AA553C714E3360A00CC30DC /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8AA553C814E3360A00CC30DC /* AppKit.framework */,
+				8AA553C914E3360A00CC30DC /* CoreData.framework */,
+				8AA553CA14E3360A00CC30DC /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		8AA553CB14E3360A00CC30DC /* FlattrKit-Mac */ = {
+			isa = PBXGroup;
+			children = (
+				8AA553CD14E3360A00CC30DC /* FlattrKit-Mac-Prefix.pch */,
+			);
+			path = "FlattrKit-Mac";
+			sourceTree = "<group>";
+		};
+		8AA553DD14E336C700CC30DC /* OAuth2Client */ = {
+			isa = PBXGroup;
+			children = (
+				8AA5543114E338DB00CC30DC /* OAuth2Client.framework */,
+				8ACC595214DEDDB700FE8DE9 /* libOAuth2Client.a */,
+				8A5CFBC014C112AF00511973 /* libOAuth2Client.a */,
+			);
+			name = OAuth2Client;
+			sourceTree = "<group>";
+		};
 		8ADF5EAB14CC37C500B0E23F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +241,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		8AA553C214E3360A00CC30DC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8ACC593E14DEDD4800FE8DE9 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -214,6 +275,23 @@
 			productName = FlattrKit;
 			productReference = 8A5CFB9114C10E3900511973 /* FlattrKit.app */;
 			productType = "com.apple.product-type.application";
+		};
+		8AA553C314E3360A00CC30DC /* FlattrKit-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AA553D314E3360A00CC30DC /* Build configuration list for PBXNativeTarget "FlattrKit-Mac" */;
+			buildPhases = (
+				8AA553C014E3360A00CC30DC /* Sources */,
+				8AA553C114E3360A00CC30DC /* Frameworks */,
+				8AA553C214E3360A00CC30DC /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FlattrKit-Mac";
+			productName = "FlattrKit-Mac";
+			productReference = 8AA553C414E3360A00CC30DC /* libFlattrKit-Mac.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		8ACC593F14DEDD4800FE8DE9 /* libFlattrKit */ = {
 			isa = PBXNativeTarget;
@@ -256,6 +334,7 @@
 			targets = (
 				8A5CFB9014C10E3900511973 /* FlattrKit */,
 				8ACC593F14DEDD4800FE8DE9 /* libFlattrKit */,
+				8AA553C314E3360A00CC30DC /* FlattrKit-Mac */,
 			);
 		};
 /* End PBXProject section */
@@ -315,6 +394,18 @@
 				8A5CFBE414C1277400511973 /* VUFlattrThing.m in Sources */,
 				8A5CFBEB14C12C2400511973 /* VUFlattrElement.m in Sources */,
 				8A5CFBEF14C1374E00511973 /* NXOAuth2Request+Bearer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AA553C014E3360A00CC30DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AA553D514E3368600CC30DC /* NXOAuth2Request+Bearer.m in Sources */,
+				8AA553D714E3368600CC30DC /* VUFlattr.m in Sources */,
+				8AA553D814E3368600CC30DC /* VUFlattrElement.m in Sources */,
+				8AA553D914E3368600CC30DC /* VUFlattrThing.m in Sources */,
+				8AA553DA14E3368600CC30DC /* VUFlattrUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +500,44 @@
 			};
 			name = Release;
 		};
+		8AA553D114E3360A00CC30DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FlattrKit-Mac/FlattrKit-Mac-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		8AA553D214E3360A00CC30DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FlattrKit-Mac/FlattrKit-Mac-Prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 		8ACC594814DEDD4800FE8DE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -453,6 +582,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		8AA553D314E3360A00CC30DC /* Build configuration list for PBXNativeTarget "FlattrKit-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AA553D114E3360A00CC30DC /* Debug */,
+				8AA553D214E3360A00CC30DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		8ACC594A14DEDD4800FE8DE9 /* Build configuration list for PBXNativeTarget "libFlattrKit" */ = {
 			isa = XCConfigurationList;

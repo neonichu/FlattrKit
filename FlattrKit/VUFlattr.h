@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#if TARGET_OS_IPHONE
 #import "VUAuthViewController.h"
+#endif
 
 @class VUFlattrUser;
 
@@ -21,7 +23,11 @@ typedef enum {
 
 typedef void (^VUFlattrLoginCompletionHandler)(VUFlattrUser* user, NSError* error);
 
+#if TARGET_OS_IPHONE
 @interface VUFlattr : NSObject <VUAuthRedirectDelegate>
+#else
+@interface VUFlattr : NSObject
+#endif
 
 +(id)flattr;
 

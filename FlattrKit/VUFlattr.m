@@ -86,6 +86,7 @@ static NSString* const kTokenURL = @"https://flattr.com/oauth/token";
         [[NXOAuth2AccountStore sharedStore] setConfiguration:configuration forAccountType:kFlattrServiceType];
     }
     
+#if TARGET_OS_IPHONE
     UIViewController* rootVC = [[UIApplication sharedApplication] keyWindow].rootViewController;
     
     [[NSNotificationCenter defaultCenter] addObserverForName:NXOAuth2AccountStoreAccountsDidChangeNotification
@@ -115,6 +116,7 @@ static NSString* const kTokenURL = @"https://flattr.com/oauth/token";
                                        [rootVC presentModalViewController:authVC animated:YES];
                                        [authVC openURL:preparedURL];
                                    }];
+#endif
 }
 
 -(void)setOAuthKey:(NSString*)key secret:(NSString*)secret {

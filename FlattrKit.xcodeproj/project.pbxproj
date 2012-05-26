@@ -73,7 +73,7 @@
 		8AA553C914E3360A00CC30DC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8AA553CA14E3360A00CC30DC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8AA553CD14E3360A00CC30DC /* FlattrKit-Mac-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlattrKit-Mac-Prefix.pch"; sourceTree = "<group>"; };
-		8AA5543114E338DB00CC30DC /* OAuth2Client.framework */ = {isa = PBXFileReference; lastKnownFileType = file; name = OAuth2Client.framework; path = OAuth2Client/build/Release/OAuth2Client.framework; sourceTree = "<group>"; };
+		8AA5543114E338DB00CC30DC /* OAuth2Client.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuth2Client.framework; path = OAuth2Client/build/Release/OAuth2Client.framework; sourceTree = "<group>"; };
 		8ACC594014DEDD4800FE8DE9 /* libFlattrKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFlattrKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACC595214DEDDB700FE8DE9 /* libOAuth2Client.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOAuth2Client.a; path = "OAuth2Client/build/Release-iphoneos/libOAuth2Client.a"; sourceTree = "<group>"; };
 		8ADF5EAD14CC37DE00B0E23F /* flattr-badge-large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flattr-badge-large.png"; sourceTree = "<group>"; };
@@ -317,7 +317,7 @@
 		8A5CFB8814C10E3800511973 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = Crocodil.us;
 			};
 			buildConfigurationList = 8A5CFB8B14C10E3800511973 /* Build configuration list for PBXProject "FlattrKit" */;
@@ -590,6 +590,7 @@
 				8AA553D214E3360A00CC30DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8ACC594A14DEDD4800FE8DE9 /* Build configuration list for PBXNativeTarget "libFlattrKit" */ = {
 			isa = XCConfigurationList;

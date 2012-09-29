@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A0119EF1617674B00EF741C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A0119EE1617674B00EF741C /* Default-568h@2x.png */; };
 		8A5CFB9614C10E3900511973 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5CFB9514C10E3900511973 /* UIKit.framework */; };
 		8A5CFB9814C10E3900511973 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5CFB9714C10E3900511973 /* Foundation.framework */; };
 		8A5CFB9A14C10E3900511973 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5CFB9914C10E3900511973 /* CoreGraphics.framework */; };
@@ -41,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A0119EE1617674B00EF741C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8A5CFB9114C10E3900511973 /* FlattrKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlattrKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5CFB9514C10E3900511973 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8A5CFB9714C10E3900511973 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				8ADF5EAF14CC4DC800B0E23F /* cant-flattr-large.png */,
+				8A0119EE1617674B00EF741C /* Default-568h@2x.png */,
 				8ADF5EAD14CC37DE00B0E23F /* flattr-badge-large.png */,
 			);
 			name = Resources;
@@ -317,7 +320,7 @@
 		8A5CFB8814C10E3800511973 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = Crocodil.us;
 			};
 			buildConfigurationList = 8A5CFB8B14C10E3800511973 /* Build configuration list for PBXProject "FlattrKit" */;
@@ -346,6 +349,7 @@
 			files = (
 				8ADF5EAE14CC37DE00B0E23F /* flattr-badge-large.png in Resources */,
 				8ADF5EB014CC4DC800B0E23F /* cant-flattr-large.png in Resources */,
+				8A0119EF1617674B00EF741C /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +488,7 @@
 				INFOPLIST_FILE = "Example/FlattrKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -496,6 +501,7 @@
 				INFOPLIST_FILE = "Example/FlattrKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -504,6 +510,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
@@ -523,6 +530,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -547,6 +555,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = FlattrKit;
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
@@ -559,6 +568,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = FlattrKit;
 				SKIP_INSTALL = YES;
+				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};

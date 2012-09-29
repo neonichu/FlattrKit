@@ -63,7 +63,7 @@
         self.title = [dictionary valueForKey:@"title"];
         self.url = [NSURL URLWithString:[dictionary valueForKey:@"url"]];
         
-        self.flattrUrl = [NSURL URLWithString:[NSString stringWithFormat:@"https://flattr.com/thing/%ld", self.identifier]];
+        self.flattrUrl = [NSURL URLWithString:[NSString stringWithFormat:@"https://flattr.com/thing/%d", self.identifier]];
         self.tags = [NSMutableArray array];
         for (NSString* tag in [dictionary valueForKey:@"tags"]) {
             [self.tags addObject:tag];

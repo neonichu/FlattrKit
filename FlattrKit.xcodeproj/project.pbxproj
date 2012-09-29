@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8A0119EF1617674B00EF741C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A0119EE1617674B00EF741C /* Default-568h@2x.png */; };
+		8A011A051617758A00EF741C /* FlattrActivityImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A011A031617758A00EF741C /* FlattrActivityImage.png */; };
+		8A011A061617758A00EF741C /* FlattrActivityImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A011A041617758A00EF741C /* FlattrActivityImage@2x.png */; };
 		8A5CFB9614C10E3900511973 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5CFB9514C10E3900511973 /* UIKit.framework */; };
 		8A5CFB9814C10E3900511973 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5CFB9714C10E3900511973 /* Foundation.framework */; };
 		8A5CFB9A14C10E3900511973 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5CFB9914C10E3900511973 /* CoreGraphics.framework */; };
@@ -43,6 +45,10 @@
 
 /* Begin PBXFileReference section */
 		8A0119EE1617674B00EF741C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		8A0119F1161769E800EF741C /* VUFlattrActivity.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VUFlattrActivity.h; path = FlattrKit/VUFlattrActivity.h; sourceTree = "<group>"; };
+		8A0119F2161769E800EF741C /* VUFlattrActivity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VUFlattrActivity.m; path = FlattrKit/VUFlattrActivity.m; sourceTree = "<group>"; };
+		8A011A031617758A00EF741C /* FlattrActivityImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlattrActivityImage.png; sourceTree = "<group>"; };
+		8A011A041617758A00EF741C /* FlattrActivityImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlattrActivityImage@2x.png"; sourceTree = "<group>"; };
 		8A5CFB9114C10E3900511973 /* FlattrKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlattrKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5CFB9514C10E3900511973 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8A5CFB9714C10E3900511973 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -116,11 +122,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A0119F01617697100EF741C /* FlattrKit-Addons */ = {
+			isa = PBXGroup;
+			children = (
+				8A0119F1161769E800EF741C /* VUFlattrActivity.h */,
+				8A0119F2161769E800EF741C /* VUFlattrActivity.m */,
+			);
+			name = "FlattrKit-Addons";
+			sourceTree = "<group>";
+		};
 		8A5CFB8614C10E3800511973 = {
 			isa = PBXGroup;
 			children = (
 				8A5CFBAD14C10E8200511973 /* Example */,
 				8A5CFB9B14C10E3900511973 /* FlattrKit */,
+				8A0119F01617697100EF741C /* FlattrKit-Addons */,
 				8AA553CB14E3360A00CC30DC /* FlattrKit-Mac */,
 				8A5CFB9414C10E3900511973 /* Frameworks */,
 				8A5CFB9214C10E3900511973 /* Products */,
@@ -236,6 +252,8 @@
 			children = (
 				8ADF5EAF14CC4DC800B0E23F /* cant-flattr-large.png */,
 				8A0119EE1617674B00EF741C /* Default-568h@2x.png */,
+				8A011A031617758A00EF741C /* FlattrActivityImage.png */,
+				8A011A041617758A00EF741C /* FlattrActivityImage@2x.png */,
 				8ADF5EAD14CC37DE00B0E23F /* flattr-badge-large.png */,
 			);
 			name = Resources;
@@ -350,6 +368,8 @@
 				8ADF5EAE14CC37DE00B0E23F /* flattr-badge-large.png in Resources */,
 				8ADF5EB014CC4DC800B0E23F /* cant-flattr-large.png in Resources */,
 				8A0119EF1617674B00EF741C /* Default-568h@2x.png in Resources */,
+				8A011A051617758A00EF741C /* FlattrActivityImage.png in Resources */,
+				8A011A061617758A00EF741C /* FlattrActivityImage@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

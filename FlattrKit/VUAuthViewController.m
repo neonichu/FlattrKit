@@ -32,6 +32,12 @@
 }
 
 -(void)openURL:(NSURL*)url {
+    if (!self.webView) {
+        [self loadView];
+    }
+    
+    NSAssert(self.webView, @"No webView available, cannot load URL.");
+    
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 

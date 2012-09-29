@@ -18,7 +18,17 @@ static NSString* const kFlattrServiceType = @"Flattr";
 static NSString* const kRedirectURL = @"http://call.back";
 static NSString* const kTokenURL = @"https://flattr.com/oauth/token";
 
+@interface VUFlattr () <VUFlattrAuthHandler>
+
+@end
+
+#pragma mark -
+
 @implementation VUFlattr
+
+@synthesize authHandler = _authHandler;
+
+#pragma mark -
 
 +(id)flattr {
 #if REMOVE_ACCOUNTS
@@ -65,6 +75,14 @@ static NSString* const kTokenURL = @"https://flattr.com/oauth/token";
     [[NXOAuth2AccountStore sharedStore] handleRedirectURL:url];
 }
 
+-(id)init {
+    self = [super init];
+    if (self) {
+        self.authHandler = self;
+    }
+    return self;
+}
+
 -(void)loginWithCompletionHandler:(VUFlattrLoginCompletionHandler)completionHandler {
     [self loginWithCompletionHandler:completionHandler scope:VUFlattrScope_Default];
 }
@@ -74,7 +92,9 @@ static NSString* const kTokenURL = @"https://flattr.com/oauth/token";
     
     if (account) {
         VUFlattrUser* user = [[VUFlattrUser alloc] initWithAccount:account dictionary:nil];
-        completionHandler(user, nil);
+        if (completionHandler) {
+            completionHandler(user, nil);
+        }
         return;
     }
     
@@ -87,16 +107,21 @@ static NSString* const kTokenURL = @"https://flattr.com/oauth/token";
     }
     
 #if TARGET_OS_IPHONE
-    UIViewController* rootVC = [[UIApplication sharedApplication] keyWindow].rootViewController;
-    
     [[NSNotificationCenter defaultCenter] addObserverForName:NXOAuth2AccountStoreAccountsDidChangeNotification
                                                       object:[NXOAuth2AccountStore sharedStore]
                                                        queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *aNotification) {
                                                       VUFlattrUser* user = [[VUFlattrUser alloc] initWithAccount:[self getAccount] 
                                                                                                       dictionary:nil];
-                                                      completionHandler(user, nil);
-                                                      [rootVC dismissModalViewControllerAnimated:YES];
+                                                      
+                                                      if ([self.authHandler
+                                                           respondsToSelector:@selector(didPerformFlattrAuthenticationWithUser:)] ) {
+                                                          [self.authHandler didPerformFlattrAuthenticationWithUser:user];
+                                                      }
+                                                      
+                                                      if (completionHandler) {
+                                                          completionHandler(user, nil);
+                                                      }
                                                   }];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:NXOAuth2AccountStoreDidFailToRequestAccessNotification
@@ -104,17 +129,24 @@ static NSString* const kTokenURL = @"https://flattr.com/oauth/token";
                                                        queue:[NSOperationQueue mainQueue]
                                                   usingBlock:^(NSNotification *aNotification) {
                                                       NSError *error = [aNotification.userInfo objectForKey:NXOAuth2AccountStoreErrorKey];
-                                                      completionHandler(nil, error);
-                                                      [rootVC dismissModalViewControllerAnimated:YES];
+                                                      
+                                                      if ([self.authHandler
+                                                           respondsToSelector:@selector(didFailFlattrAuthenticationWithError:)]) {
+                                                          [self.authHandler didFailFlattrAuthenticationWithError:error];
+                                                      }
+                                                      
+                                                      if (completionHandler) {
+                                                          completionHandler(nil, error);
+                                                      }
                                                   }];
     
     [[NXOAuth2AccountStore sharedStore] requestAccessToAccountWithType:kFlattrServiceType
                                    withPreparedAuthorizationURLHandler:^(NSURL *preparedURL) {
-                                       VUAuthViewController* authVC = [[VUAuthViewController alloc] init];
-                                       authVC.delegate = self;
-                                       authVC.redirectURL = [NSURL URLWithString:kRedirectURL];
-                                       [rootVC presentModalViewController:authVC animated:YES];
-                                       [authVC openURL:preparedURL];
+                                       if ([self.authHandler
+                                            respondsToSelector:@selector(performFlattrAuthenticationWithPreparedURL:redirectURL:)]) {
+                                           [self.authHandler performFlattrAuthenticationWithPreparedURL:preparedURL
+                                                                                            redirectURL:[NSURL URLWithString:kRedirectURL]];
+                                       }
                                    }];
 #endif
 }
@@ -126,6 +158,27 @@ static NSString* const kTokenURL = @"https://flattr.com/oauth/token";
                                            tokenURL:[NSURL URLWithString:kTokenURL]
                                         redirectURL:[NSURL URLWithString:kRedirectURL]
                                      forAccountType:kFlattrServiceType];
+}
+
+#pragma mark - VUFlattrAuthHandler methods
+
+-(void)didFailFlattrAuthenticationWithError:(NSError *)error {
+    UIViewController* rootVC = [[UIApplication sharedApplication] keyWindow].rootViewController;
+    [rootVC dismissModalViewControllerAnimated:YES];
+}
+
+-(void)didPerformFlattrAuthenticationWithUser:(VUFlattrUser *)user {
+    UIViewController* rootVC = [[UIApplication sharedApplication] keyWindow].rootViewController;
+    [rootVC dismissModalViewControllerAnimated:YES];
+}
+
+-(void)performFlattrAuthenticationWithPreparedURL:(NSURL *)preparedURL redirectURL:(NSURL *)redirectURL {
+    UIViewController* rootVC = [[UIApplication sharedApplication] keyWindow].rootViewController;
+    VUAuthViewController* authVC = [[VUAuthViewController alloc] init];
+    authVC.delegate = self;
+    authVC.redirectURL = redirectURL;
+    [rootVC presentModalViewController:authVC animated:YES];
+    [authVC openURL:preparedURL];
 }
 
 @end

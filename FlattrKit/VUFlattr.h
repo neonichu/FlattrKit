@@ -23,6 +23,14 @@ typedef enum {
 
 typedef void (^VUFlattrLoginCompletionHandler)(VUFlattrUser* user, NSError* error);
 
+@protocol VUFlattrAuthHandler <NSObject>
+
+-(void)didFailFlattrAuthenticationWithError:(NSError*)error;
+-(void)didPerformFlattrAuthenticationWithUser:(VUFlattrUser*)user;
+-(void)performFlattrAuthenticationWithPreparedURL:(NSURL*)preparedURL redirectURL:(NSURL*)redirectURL;
+
+@end
+
 /** 
  Connect to Flattr using the REST v2 API.
  
@@ -36,6 +44,9 @@ typedef void (^VUFlattrLoginCompletionHandler)(VUFlattrUser* user, NSError* erro
 #else
 @interface VUFlattr : NSObject
 #endif
+
+/** Delegate for handling authentication */
+@property (nonatomic, weak) id<VUFlattrAuthHandler> authHandler;
 
 /** Retrieve singleton instance. */
 +(id)flattr;

@@ -474,6 +474,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
@@ -497,6 +498,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};
@@ -575,7 +577,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = FlattrKit;
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 i386";
 			};
 			name = Debug;
 		};
@@ -588,7 +590,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = FlattrKit;
 				SKIP_INSTALL = YES;
-				VALID_ARCHS = armv7;
+				VALID_ARCHS = "armv7 i386";
 			};
 			name = Release;
 		};
